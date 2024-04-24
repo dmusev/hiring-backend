@@ -1,0 +1,6 @@
+input CreateOfferInput {
+  candidateId: String!
+  salary: Float
+  status: String!
+  title: String!
+}

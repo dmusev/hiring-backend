@@ -1,0 +1,6 @@
+type Candidate {
+  id: ID!
+  name: String!
+  email: String!
+  offers: [Offer]
+}

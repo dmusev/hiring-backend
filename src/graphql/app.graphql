@@ -1,0 +1,12 @@
+type Query {
+  offers: [Offer]
+  offer(id: ID!): Offer
+  candidates: [Candidate]
+  candidate(id: ID!): Candidate
+}
+
+type Mutation {
+  createOffer(input: CreateOfferInput): Offer
+  updateOffer(id: ID!, status: String!): Offer
+  createCandidate(input: CreateCandidateInput): Candidate
+}
