@@ -1,12 +1,15 @@
 type Query {
   offers: [Offer]
+  totalOffers: Int
   offer(id: ID!): Offer
   candidates: [Candidate]
+  totalCandidates: Int
   candidate(id: ID!): Candidate
 }
 
 type Mutation {
   createOffer(input: CreateOfferInput): Offer
   updateOffer(id: ID!, status: String!): Offer
+  login(input: LoginInput): Auth
   createCandidate(input: CreateCandidateInput): Candidate
 }

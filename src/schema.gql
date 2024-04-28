@@ -1,0 +1,62 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  accessToken: String!
+  user: User!
+}
+
+type Candidate {
+  email: String!
+  id: ID!
+  name: String!
+  offers: [Offer!]!
+}
+
+input CreateCandidateInput {
+  email: String!
+  name: String!
+}
+
+input CreateOfferInput {
+  candidateId: String!
+  salary: Float
+  status: String!
+  title: String!
+}
+
+input LoginInput {
+  email: String!
+  id: String!
+}
+
+type Mutation {
+  createCandidate(input: CreateCandidateInput!): Candidate!
+  createOffer(input: CreateOfferInput!): Offer!
+  login(input: LoginInput!): Auth!
+}
+
+type Offer {
+  candidate: Candidate!
+  candidateId: Float
+  id: ID!
+  salary: Float
+  status: String!
+  title: String!
+}
+
+type Query {
+  candidate(id: String!): Candidate!
+  candidates: [Candidate!]!
+  offer(id: String!): Offer!
+  offers: [Offer!]!
+  totalCandidates: Float!
+  totalOffers: Float!
+}
+
+type User {
+  email: String!
+  id: ID!
+  name: String!
+}

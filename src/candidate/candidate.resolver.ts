@@ -12,6 +12,11 @@ export class CandidateResolver {
         return this.candidateService.findAll();
     }
 
+    @Query(returns => Number)
+    totalCandidates() {
+        return this.candidateService.findTotalCount();
+    }
+
     @Query(returns => Candidate)
     candidate(@Args('id') id: string) {
         return this.candidateService.findOne(id);

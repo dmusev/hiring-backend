@@ -22,6 +22,17 @@ export class CandidateService {
         });
     }
 
+    findTotalCount(): Promise<Number> {
+        return this.candidateRepository.count();
+    }
+
+    findByEmail(id: any, email: string): Promise<Candidate> {
+        // TODO: Add more sophisticated validation, eg: password hashing and comparison
+        return this.candidateRepository.findOne({
+            where: { id, email },
+        });
+    }
+
     async create(candidateData: CreateCandidateDto): Promise<Candidate> {
         const candidate = this.candidateRepository.create(candidateData);
         await this.candidateRepository.save(candidate);
