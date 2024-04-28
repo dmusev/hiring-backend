@@ -1,11 +1,15 @@
-import { Module } from '@nestjs/common';
+// src/app.module.ts
+
+import { Module, OnModuleInit } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { OfferModule } from './offer/offer.module';
 import { CandidateModule } from './candidate/candidate.module';
-
+import { SeedService } from './seed/seed.service';
+import { CandidateService } from './candidate/candidate.service';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -18,14 +22,24 @@ import { CandidateModule } from './candidate/candidate.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    OfferModule,
-    CandidateModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
       playground: true,
     }),
+    OfferModule,
+    CandidateModule,
+    AuthModule,
   ],
+  providers: [SeedService, CandidateService]
 })
-export class AppModule { }
+export class AppModule implements OnModuleInit {
+  constructor(private readonly seedService: SeedService) { }
+
+  async onModuleInit() {
+    if (process.env.NODE_ENV === 'development') {
+      await this.seedService.seedCandidates();
+    }
+  }
+}
