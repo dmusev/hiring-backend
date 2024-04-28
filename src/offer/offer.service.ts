@@ -25,6 +25,10 @@ export class OfferService {
         });
     }
 
+    findTotalCount(): Promise<Number> {
+        return this.offerRepository.count();
+    }
+
     async create(createOfferInput: CreateOfferInput): Promise<Offer> {
         const offer = this.offerRepository.create(createOfferInput);
         await this.offerRepository.save(offer);
