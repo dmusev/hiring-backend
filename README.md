@@ -35,12 +35,14 @@ Follow these steps to set up your application using Docker:
 3. **Verify Containers are running**
 
    Check the status of your Docker containers to ensure they are running correctly:
-   
+
    ```bash
    docker ps
    ```
 
-4. **Example Queries & Mutations**
+4. Server should be available at: **[http://localhost:3000/graphql](http://localhost:3000/graphql)**
+
+5. **Example Queries & Mutations**
 
 Queries:
 
