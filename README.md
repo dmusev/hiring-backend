@@ -24,7 +24,9 @@ Follow these steps to set up your application using Docker:
    cd hiring-backend
    ```
 
-2. **Build and Run Docker ContainersUse Docker Compose to build and run the containers specified in your docker-compose.yml**
+2. **Build and Run Docker Containers**
+  
+  Use Docker Compose to build and run the containers specified in your docker-compose.yml:
 
    ```bash
    docker-compose -f docker-compose.backend.yml up --build
@@ -33,6 +35,7 @@ Follow these steps to set up your application using Docker:
 3. **Verify Containers are running**
 
    Check the status of your Docker containers to ensure they are running correctly:
+   
    ```bash
    docker ps
    ```
