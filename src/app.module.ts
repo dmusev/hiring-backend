@@ -38,8 +38,8 @@ export class AppModule implements OnModuleInit {
   constructor(private readonly seedService: SeedService) { }
 
   async onModuleInit() {
-    if (process.env.NODE_ENV === 'development') {
-      await this.seedService.seedCandidates();
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    await this.seedService.seedCandidates();
+    // }
   }
 }
